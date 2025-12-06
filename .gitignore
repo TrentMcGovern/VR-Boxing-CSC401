@@ -1,0 +1,35 @@
+# Unity
+.DS_Store
+*.meta
+
+# Folders
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+MemoryCaptures/
+
+# Rider
+.idea/
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.csproj.user
+*.sln.user
+
+# Visual Studio
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+
+# Asset Store Tools
+AssetStoreTools/
+
+# Blender backup files
+*.blend[1-9]
