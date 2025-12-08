@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitToSpawn:
-  - {fileID: 3178214701146041164, guid: ba316f264051e604a81b441710ae1f6a, type: 3}
+  - {fileID: 4915412705942588206, guid: 3328eda8e6ce8ea4493d3a11bcce6b37, type: 3}
   - {fileID: 7326994324933682232, guid: e2c19fefa8d3e234883dc9fc845914ae, type: 3}
   - {fileID: 9169039837328515843, guid: d197c20cd03b1014ea1b7b94279766de, type: 3}
   - {fileID: 828534051669426013, guid: 908f6a2e52291134aa4ae970ad8b25ac, type: 3}

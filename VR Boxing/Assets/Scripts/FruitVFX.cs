@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleScript : MonoBehaviour
+public class FruitVFX : MonoBehaviour
 {
     public GameObject deathParticles;
     // Start is called before the first frame update
