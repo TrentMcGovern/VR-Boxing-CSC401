@@ -236,6 +236,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4677565357322384706, guid: e2c19fefa8d3e234883dc9fc845914ae, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f80b7ac088a34b45b24ac02e43d0202, type: 3}
     - target: {fileID: 6524677255826423034, guid: e2c19fefa8d3e234883dc9fc845914ae, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
