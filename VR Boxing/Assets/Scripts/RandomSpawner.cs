@@ -36,7 +36,7 @@ public class RandomSpawner : MonoBehaviour
     void SpawnObject()
     {
         //generate random number to determine which fruit spawns
-        int randomNum = Random.Range(1, 6);
+        int randomNum = Random.Range(0, 1);
 
         // Generate a random position within the range
         float randomX = Random.Range(minX, maxX);
