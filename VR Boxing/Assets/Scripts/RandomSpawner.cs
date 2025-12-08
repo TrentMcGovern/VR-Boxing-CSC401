@@ -8,10 +8,10 @@ public class RandomSpawner : MonoBehaviour
     public GameObject[] fruitToSpawn;
 
     // Spawn Area
-    public float minX = -10f;
-    public float maxX = 10f;
-    public float minZ = -10f;
-    public float maxZ = 10f;
+    public float minX = 0;
+    public float maxX = 4;
+    public float minZ = 0;
+    public float maxZ = 0;
     public float spawnY = 5f; // A fixed Y position
 
     // Time between spawns/Destroy
@@ -36,7 +36,7 @@ public class RandomSpawner : MonoBehaviour
     void SpawnObject()
     {
         //generate random number to determine which fruit spawns
-        int randomNum = Random.Range(0, 1);
+        int randomNum = Random.Range(0, 6);
 
         // Generate a random position within the range
         float randomX = Random.Range(minX, maxX);
