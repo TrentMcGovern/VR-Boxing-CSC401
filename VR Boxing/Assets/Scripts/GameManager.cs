@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager: MonoBehaviour
 {
@@ -21,16 +22,34 @@ public class GameManager: MonoBehaviour
     public float spawnRate = 2.5f;
 
     [Header("Timer Management")]
+    [SerializeField]
     private float timer = 120f; // 2 minutes
     private bool timerRunning = true;
     public TextMeshProUGUI timerText;
+
+    [Header("UI")]
+    public GameObject gameOverPanel;
+    public TextMeshProUGUI finalScoreText;
+
+    [Header("VR")]
+    public Transform playerHead;
+    public GameObject leftGloveInteractor;
+    public GameObject rightGloveInteractor;
+    public GameObject leftRayInteractor;
+    public GameObject rightRayInteractor;
+
+    private bool isGameOver = false;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
     }
     private void Start()
     {
+        gameOverPanel.SetActive(false);
         if (spawnerSides.Length == 0)
         {
             Debug.LogError("No fruit spawns assigned");
@@ -103,8 +122,7 @@ public class GameManager: MonoBehaviour
             {
                 timer = 0;
                 timerRunning = false;
-                Debug.Log("TIME'S UP!");
-                // You can trigger game over here
+                ShowGameOver();
             }
 
             yield return new WaitForSeconds(1f);
@@ -143,5 +161,37 @@ public class GameManager: MonoBehaviour
             if (directionText != null) directionText.text = "Incoming from: " + chosenSpawnerGO.name;
         }
     }
+    private void ShowGameOver()
+    {
+        if (isGameOver) return;
+        PauseMenu pm = FindObjectOfType<PauseMenu>();
+        if (pm != null)
+        {
+            pm.pauseMenu.SetActive(false);   // hide pause UI if visible
+            pm.enabled = false;              // disable the whole script
+        }
+        isGameOver = true;
 
+        Time.timeScale = 0f;
+
+        gameOverPanel.SetActive(true);
+        gameOverPanel.transform.position = playerHead.position + playerHead.forward * 6f + playerHead.up * 4;
+        gameOverPanel.transform.rotation = Quaternion.Euler(0, playerHead.eulerAngles.y, 0);
+        SetInteractorsActive(false, true);
+        if (finalScoreText != null)
+            finalScoreText.text = "Final Score: " + Score;
+    }
+    private void SetInteractorsActive(bool directActive, bool rayActive)
+    {
+        leftGloveInteractor.SetActive(directActive);
+        rightGloveInteractor.SetActive(directActive);
+        leftRayInteractor.SetActive(rayActive);
+        rightRayInteractor.SetActive(rayActive);
+    }
+    public void RestartGame()
+    {
+        Debug.Log("RESTART BUTTON PRESSED");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
