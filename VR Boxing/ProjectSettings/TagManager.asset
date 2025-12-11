@@ -7,6 +7,7 @@ TagManager:
   - Fruit
   - Floor
   - Glove
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Fruit
   - Controller
   - RingFloor
-  - Player
+  - PlayerBody
   - 
   - 
   - 
