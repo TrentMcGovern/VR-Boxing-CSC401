@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7700,15 +7700,15 @@ MonoBehaviour:
   scoreText: {fileID: 1790592591}
   directionText: {fileID: 1259073200}
   unlockSecondSide: 10
-  unlockThirdSide: 20
-  unlockFourthSide: 30
+  unlockThirdSide: 25
+  unlockFourthSide: 40
   spawnerSides:
   - {fileID: 1911149926}
   - {fileID: 983569578}
   - {fileID: 1322322099}
   - {fileID: 643752463}
-  spawnRate: 0.5
-  timer: 5
+  spawnRate: 1
+  timer: 120
   timerText: {fileID: 1419792383}
   gameOverPanel: {fileID: 1983114296}
   finalScoreText: {fileID: 756118327}
