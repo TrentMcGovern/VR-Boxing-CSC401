@@ -15,7 +15,7 @@ public class PlayerSounds : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)  
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Fruit"))

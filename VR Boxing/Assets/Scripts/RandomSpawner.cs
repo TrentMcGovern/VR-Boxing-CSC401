@@ -12,8 +12,6 @@ public class RandomSpawner : MonoBehaviour
     private Transform targetCenter;
     [SerializeField] 
     private float landingOffset = 5f;
-    [SerializeField]
-    private Transform fruitSpawnerPos;
 
 
     // Spawn Area
@@ -34,25 +32,8 @@ public class RandomSpawner : MonoBehaviour
 
     [Header("Fruit Spawn Rate and Death Timer")]
     [SerializeField]
-    // Time between spawns/Destroy
-    private float spawnRate = 2.5f;
-    [SerializeField]
     private float destroyDelay = 8f;
 
-    void Start()
-    {
-        StartCoroutine(SpawnRoutine());
-    }
-
-    IEnumerator SpawnRoutine()
-    {
-        // Infinite loop to keep spawning
-        while (true) 
-        {
-            SpawnObject();
-            yield return new WaitForSeconds(spawnRate); // Wait for the specified time
-        }
-    }
 
     // math/physics very complicated
     public static Vector3 CalculateLaunchVelocity(Vector3 start, Vector3 target, float angle)
@@ -84,7 +65,7 @@ public class RandomSpawner : MonoBehaviour
 
         return launchVelocity;
     }
-    void SpawnObject()
+    public void SpawnObject()
     {
         int randomNum = Random.Range(0, fruitToSpawn.Length);
 
@@ -93,9 +74,9 @@ public class RandomSpawner : MonoBehaviour
         float randomY = Random.Range(minY, maxY);
 
         Vector3 randomSpawnPosition = new Vector3(
-            fruitSpawnerPos.position.x + randomX,
-            fruitSpawnerPos.position.y + randomY,
-            fruitSpawnerPos.position.z + randomZ
+            this.transform.position.x + randomX,
+            this.transform.position.y + randomY,
+            this.transform.position.z + randomZ
         );
 
         GameObject spawnedFruit = Instantiate(

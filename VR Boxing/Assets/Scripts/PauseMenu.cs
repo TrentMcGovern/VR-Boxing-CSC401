@@ -16,6 +16,10 @@ public class PauseMenu : MonoBehaviour
     [Header("VR")]
     public Transform playerHead;
     public InputActionProperty pauseButton;
+    public GameObject leftGloveInteractor;  
+    public GameObject rightGloveInteractor; 
+    public GameObject leftRayInteractor;   
+    public GameObject rightRayInteractor;  
 
     [Header("Audio")]
     public AudioSource m_MyAudioSource;
@@ -43,7 +47,9 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        // You can set slider defaults here if needed
+        pauseMenu.SetActive(false);
+        // Ensure gloves are active and rays are inactive at start
+        SetInteractorsActive(true, false);
     }
 
     private void OnPauseAction(InputAction.CallbackContext context)
@@ -55,27 +61,47 @@ public class PauseMenu : MonoBehaviour
             ResumeGame();
         else
             PauseGame();
+
+
     }
 
     public void PauseGame()
     {
         isPaused = true;
 
-        // DO NOT pause XR input or tracking with timeScale=0
+ 
         Time.timeScale = 0f;
 
         pauseMenu.SetActive(true);
 
-        // Position UI in front of the player’s eyess
+        // Position UI in front of the player’s eyes
         pauseMenu.transform.position = playerHead.position + playerHead.forward * 6f + playerHead.up * 4;
         pauseMenu.transform.rotation = Quaternion.Euler(0, playerHead.eulerAngles.y, 0);
+
+        SetInteractorsActive(false, true);
     }
 
     public void ResumeGame()
     {
-        isPaused = false;
 
+        isPaused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        SetInteractorsActive(true, false);
+
+    }
+
+    private void SetInteractorsActive(bool directActive, bool rayActive)
+    {
+        leftGloveInteractor.SetActive(directActive);
+        rightGloveInteractor.SetActive(directActive);
+        leftRayInteractor.SetActive(rayActive);
+        rightRayInteractor.SetActive(rayActive);
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
