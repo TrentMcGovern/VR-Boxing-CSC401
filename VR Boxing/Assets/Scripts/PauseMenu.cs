@@ -66,12 +66,11 @@ public class PauseMenu : MonoBehaviour
 
         pauseMenu.SetActive(true);
 
-        // Position UI in front of the player’s eyes
-        Vector3 forwardFlat = Vector3.ProjectOnPlane(playerHead.forward, Vector3.up).normalized;
-        pauseMenu.transform.position = playerHead.position + forwardFlat * 5f + Vector3.up * 3;
-        pauseMenu.transform.rotation = Quaternion.LookRotation(forwardFlat);
+        // Position UI in front of the player’s eyess
+        pauseMenu.transform.position = playerHead.position + playerHead.forward * 6f + playerHead.up * 4;
+        pauseMenu.transform.rotation = Quaternion.Euler(0, playerHead.eulerAngles.y, 0);
     }
-    
+
     public void ResumeGame()
     {
         isPaused = false;
