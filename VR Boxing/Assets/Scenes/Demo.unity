@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5076,12 +5076,16 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
+      propertyPath: spawnRate
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpeed
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: destroyDelay
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: targetCenter
@@ -5089,7 +5093,7 @@ PrefabInstance:
       objectReference: {fileID: 1032826647}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: landingOffset
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpawnerPos
@@ -6790,7 +6794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 228026732912517639, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1802.96
+      value: 1797.08
       objectReference: {fileID: 0}
     - target: {fileID: 228026732912517639, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6845,8 +6849,12 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
+      propertyPath: spawnRate
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpeed
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: destroyDelay
@@ -6858,7 +6866,7 @@ PrefabInstance:
       objectReference: {fileID: 1032826647}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: landingOffset
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpawnerPos
@@ -9122,7 +9130,7 @@ Transform:
   m_GameObject: {fileID: 1032826646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1897.31, y: 0.94, z: 1739.57}
+  m_LocalPosition: {x: 1897.31, y: 4.26, z: 1739.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10649,12 +10657,16 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
+      propertyPath: spawnRate
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpeed
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: destroyDelay
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: targetCenter
@@ -10662,7 +10674,7 @@ PrefabInstance:
       objectReference: {fileID: 1032826647}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: landingOffset
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpawnerPos
@@ -15091,12 +15103,16 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
+      propertyPath: spawnRate
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpeed
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: destroyDelay
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: targetCenter
@@ -15104,7 +15120,7 @@ PrefabInstance:
       objectReference: {fileID: 1032826647}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: landingOffset
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2015808526154551489, guid: 23f4d9377868ab946981f038e12d1ea4, type: 3}
       propertyPath: fruitSpawnerPos

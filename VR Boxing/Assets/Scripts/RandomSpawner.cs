@@ -56,7 +56,35 @@ public class RandomSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnRate); // Wait for the specified time
         }
     }
+    public static Vector3 CalculateLaunchVelocity(Vector3 start, Vector3 target, float angle)
+    {
+        float gravity = Mathf.Abs(Physics.gravity.y);
 
+        // Horizontal displacement
+        Vector3 horizontal = new Vector3(target.x - start.x, 0, target.z - start.z);
+        float distance = horizontal.magnitude;
+
+        // Height difference
+        float heightDifference = target.y - start.y;
+
+        float rad = angle * Mathf.Deg2Rad;
+
+        // Velocity magnitude formula
+        float velocitySquared =
+            (gravity * distance * distance) /
+            (2 * (distance * Mathf.Tan(rad) - heightDifference) * Mathf.Pow(Mathf.Cos(rad), 2));
+
+        if (velocitySquared < 0)
+            return Vector3.zero; // no valid solution
+
+        float velocity = Mathf.Sqrt(velocitySquared);
+
+        // Create velocity vector
+        Vector3 launchVelocity = horizontal.normalized * velocity * Mathf.Cos(rad);
+        launchVelocity.y = velocity * Mathf.Sin(rad);
+
+        return launchVelocity;
+    }
     void SpawnObject()
     {
         int randomNum = Random.Range(0, fruitToSpawn.Length);
@@ -83,61 +111,53 @@ public class RandomSpawner : MonoBehaviour
         targetPos.z += Random.Range(-landingOffset, landingOffset);
 
         Vector3 direction = (targetPos - randomSpawnPosition).normalized;
-
-        // Add arc (very complicated)
-        Vector3 arced = direction + Vector3.up * arcHeight;
-        arced.Normalize();
+        Vector3 v0 = CalculateLaunchVelocity(randomSpawnPosition, targetPos, 45f);
         Rigidbody rb = spawnedFruit.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            Vector3 start = randomSpawnPosition;
-            Vector3 end = targetPos;
+        rb.velocity = v0;   // Apply the initial velocity
+        //// Add arc (very complicated)
+        //Vector3 arced = direction + Vector3.up * arcHeight;
+        //arced.Normalize();
+        //Rigidbody rb = spawnedFruit.GetComponent<Rigidbody>();
+        //if (rb != null)
+        //{
+        //    Vector3 start = randomSpawnPosition;
+        //    Vector3 end = targetPos;
 
-            float gravity = Mathf.Abs(Physics.gravity.y);
-            float speed = fruitSpeed;
+        //    float gravity = Mathf.Abs(Physics.gravity.y);
+        //    float speed = fruitSpeed;
 
-            Vector3 toTarget = end - start;
-            Vector3 toTargetXZ = new Vector3(toTarget.x, 0f, toTarget.z);
+        //    Vector3 toTarget = end - start;
+        //    Vector3 toTargetXZ = new Vector3(toTarget.x, 0f, toTarget.z);
 
-            float xzDist = toTargetXZ.magnitude;
-            float yDist = toTarget.y;
+        //    float xzDist = toTargetXZ.magnitude;
+        //    float yDist = toTarget.y;
 
-            float v2 = speed * speed;
+        //    float v2 = speed * speed;
 
-            float discriminant = (v2 * v2) - gravity * (gravity * xzDist * xzDist + 2f * yDist * v2);
+        //    float discriminant = (v2 * v2) - gravity * (gravity * xzDist * xzDist + 2f * yDist * v2);
 
-            Vector3 velocity;
+        //    Vector3 velocity;
 
-            if (discriminant >= 0f)
-            {
-                float root = Mathf.Sqrt(discriminant);
+        //    if (discriminant >= 0f)
+        //    {
+        //        float root = Mathf.Sqrt(discriminant);
+        //        float angleLow = Mathf.Atan((v2 - root) / (gravity * xzDist));
+        //        float angleHigh = Mathf.Atan((v2 + root) / (gravity * xzDist));
+        //        float t = Mathf.Clamp01(arcHeight);
+        //        float angle = Mathf.Lerp(angleLow, angleHigh, t);
+        //        Vector3 dirXZ = toTargetXZ.normalized;
+        //        velocity =
+        //            dirXZ * Mathf.Cos(angle) * speed +
+        //            Vector3.up * Mathf.Sin(angle) * speed;
+        //    }
+        //    else
+        //    {
+        //        // If impossible (too far), shoot straight
+        //        velocity = toTarget.normalized * speed;
+        //    }
 
-                // LOW ARC
-                float angleLow = Mathf.Atan((v2 - root) / (gravity * xzDist));
-
-                // HIGH ARC
-                float angleHigh = Mathf.Atan((v2 + root) / (gravity * xzDist));
-
-                // Blend between the two using arcHeight (0 = flat, 1 = high)
-                float t = Mathf.Clamp01(arcHeight);
-                float angle = Mathf.Lerp(angleLow, angleHigh, t);
-
-                Vector3 dirXZ = toTargetXZ.normalized;
-
-                velocity =
-                    dirXZ * Mathf.Cos(angle) * speed +
-                    Vector3.up * Mathf.Sin(angle) * speed;
-            }
-            else
-            {
-                // If impossible (too far), shoot straight
-                velocity = toTarget.normalized * speed;
-            }
-
-            rb.velocity = velocity;
-        }
-
-
+        //    rb.velocity = velocity;
+        //}
         Destroy(spawnedFruit, destroyDelay);
     }
 }
