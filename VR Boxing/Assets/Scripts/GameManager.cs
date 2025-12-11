@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager: MonoBehaviour
+public class GameManager: MonoBehaviour
 {
-    public static ScoreManager Instance;
-
+    [Header("Score Management")]
+    public static GameManager Instance;
     public int Score = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI directionText;
@@ -20,7 +20,10 @@ public class ScoreManager: MonoBehaviour
     public GameObject[] spawnerSides;
     public float spawnRate = 2.5f;
 
-
+    [Header("Timer Management")]
+    private float timer = 120f; // 2 minutes
+    private bool timerRunning = true;
+    public TextMeshProUGUI timerText;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -43,12 +46,14 @@ public class ScoreManager: MonoBehaviour
         if (directionText != null) directionText.text = "Incoming from: " + spawnerSides[0].name;
 
         StartCoroutine(SpawnRoutine());
+        StartCoroutine(TimerRoutine());
         UpdateHUD();
     }
 
     public void AddScore(int amount)
     {
         Score += amount;
+        timer += 5f;
         UpdateHUD();
         EvaluateDifficulty();
     }
@@ -78,7 +83,33 @@ public class ScoreManager: MonoBehaviour
         if (scoreText != null)
             scoreText.text = "Score: " + Score;
     }
+    void UpdateTimerText()
+    {
+        if (timerText == null) return;
 
+        int minutes = Mathf.FloorToInt(timer / 60);
+        int seconds = Mathf.FloorToInt(timer % 60);
+
+        timerText.text = $"{minutes:00}:{seconds:00}";
+    }
+    IEnumerator TimerRoutine()
+    {
+        while (timerRunning)
+        {
+            timer -= 1f;
+            UpdateTimerText();
+
+            if (timer <= 0)
+            {
+                timer = 0;
+                timerRunning = false;
+                Debug.Log("TIME'S UP!");
+                // You can trigger game over here
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
     IEnumerator SpawnRoutine()
     {
         while (true)

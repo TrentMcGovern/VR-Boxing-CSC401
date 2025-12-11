@@ -28,7 +28,7 @@ public class FruitHit : MonoBehaviour
             Vector3 position = contact.point;
             // Instantiate the particle effect at the collision point and rotation
             GameObject effectInstance = Instantiate(deathParticles, position, rotation);
-            ScoreManager.Instance.AddScore(1);
+            GameManager.Instance.AddScore(1);
             Destroy(this.gameObject, .1f);
         }
 
