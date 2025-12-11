@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ScoreManager: MonoBehaviour
@@ -7,6 +8,7 @@ public class ScoreManager: MonoBehaviour
     public static ScoreManager Instance;
 
     public int Score = 0;
+    public TextMeshProUGUI scoreText;
 
     [Header("Difficulty Thresholds")]
     public int unlockSecondSide = 20;
@@ -24,6 +26,7 @@ public class ScoreManager: MonoBehaviour
     public void AddScore(int amount)
     {
         Score += amount;
+        UpdateHUD();
         EvaluateDifficulty();
     }
 
@@ -39,6 +42,11 @@ public class ScoreManager: MonoBehaviour
             sidesUnlocked = 1;
     }
 
+    private void UpdateHUD()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + Score;
+    }
 
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FruitHit : MonoBehaviour
 {
-
+    private bool hit = false;
 
     public GameObject deathParticles;
     // Start is called before the first frame update
@@ -17,8 +17,12 @@ public class FruitHit : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (hit) return;
+
+        if (collision.collider.gameObject.CompareTag("Glove"))
         {
+            hit = true;
+
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 position = contact.point;

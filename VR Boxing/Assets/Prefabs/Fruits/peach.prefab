@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4882723046976901937}
   - component: {fileID: 4722719219829365385}
   - component: {fileID: -1054461916956787241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: peach
   m_TagString: Fruit
   m_Icon: {fileID: 0}
