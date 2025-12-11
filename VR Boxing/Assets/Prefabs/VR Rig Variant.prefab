@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSound: {fileID: 8300000, guid: 7f80b7ac088a34b45b24ac02e43d0202, type: 3}
+  audioSource: {fileID: 0}
 --- !u!82 &1042904418590603055
 AudioSource:
   m_ObjectHideFlags: 0

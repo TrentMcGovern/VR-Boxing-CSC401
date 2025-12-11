@@ -1,5 +1,5 @@
 {
-    "name": "New Controls",
+    "name": "XR Controls",
     "maps": [
         {
             "name": "XR Controls",
@@ -19,7 +19,7 @@
                 {
                     "name": "",
                     "id": "f590ab29-c577-4214-a0c2-c19153fc69be",
-                    "path": "",
+                    "path": "<XRController>{LeftHand}/{PrimaryTrigger}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

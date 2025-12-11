@@ -5,73 +5,78 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-
-
 public class PauseMenu : MonoBehaviour
 {
+    [Header("UI")]
     public GameObject pauseMenu;
-    private bool isPaused;
-
-    public InputActionProperty pauseButton;
-    public AudioSource m_MyAudioSource;
-    //Value from the slider, and it converts to volume level
-    public float m_MySliderValue;
-   
     public Slider volume;
     public Slider sfx;
     public Toggle snap_turn;
 
-    void Awake()
+    [Header("VR")]
+    public Transform playerHead;
+    public InputActionProperty pauseButton;
+
+    [Header("Audio")]
+    public AudioSource m_MyAudioSource;
+
+    private bool isPaused = false;
+
+    private void Awake()
     {
-        if(pauseMenu != null)
-        {
+        if (pauseMenu != null)
             pauseMenu.SetActive(false);
-        }
+
+        if (m_MyAudioSource == null)
+            m_MyAudioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
-        pauseButton.action.performed += OnPauseAction; 
+        pauseButton.action.performed += OnPauseAction;
     }
-    void Start()
+
+    private void OnDisable()
     {
-        //Initiate the Slider value to half way
-        volume.value = 0.5f;
-        sfx.value = 0.5f;
-        //Fetch the AudioSource from the GameObject
-        m_MyAudioSource = GetComponent<AudioSource>();
-        //Play the AudioClip attached to the AudioSource on startup
-        //m_MyAudioSource.Play();
+        pauseButton.action.performed -= OnPauseAction;
+    }
+
+    private void Start()
+    {
+        // You can set slider defaults here if needed
     }
 
     private void OnPauseAction(InputAction.CallbackContext context)
     {
+        // Prevent multiple toggles from a single press
+        if (!context.performed) return;
+
         if (isPaused)
-        {
             ResumeGame();
-        }
         else
-        {
             PauseGame();
-        }
     }
+
     public void PauseGame()
     {
         isPaused = true;
-        Time.timeScale = 0f; // Pauses most game physics and movement
-        pauseMenu.SetActive(true); // Show the menu
 
-        // You may need additional code here to manage the VR cursor visibility 
-        // or switch hand models (as Half-Life Alyx does)
+        // DO NOT pause XR input or tracking with timeScale=0
+        Time.timeScale = 0f;
+
+        pauseMenu.SetActive(true);
+
+        // Position UI in front of the player’s eyes
+        Vector3 forwardFlat = Vector3.ProjectOnPlane(playerHead.forward, Vector3.up).normalized;
+        pauseMenu.transform.position = playerHead.position + forwardFlat * 5f + Vector3.up * 3;
+        pauseMenu.transform.rotation = Quaternion.LookRotation(forwardFlat);
     }
-
+    
     public void ResumeGame()
     {
         isPaused = false;
-        Time.timeScale = 1f; // Resumes game time
-        pauseMenu.SetActive(false); // Hide the menu
-        // Re-hide the cursor if necessary
+
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
     }
-
 }
-
