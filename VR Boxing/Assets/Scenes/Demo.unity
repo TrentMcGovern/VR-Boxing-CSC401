@@ -2247,10 +2247,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09429598
-  m_Height: 0.25680757
+  m_Radius: 1.9077873
+  m_Height: 7.531857
   m_Direction: 2
-  m_Center: {x: -0.03999999, y: 0.015704036, z: -0.021596193}
+  m_Center: {x: -0.50472546, y: 0.31710148, z: 1.8932512}
 --- !u!114 &168283916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3896,10 +3896,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09429598
-  m_Height: 0.25680757
+  m_Radius: 1.8529987
+  m_Height: 7.323668
   m_Direction: 2
-  m_Center: {x: 0.03, y: 0.015704036, z: -0.021596193}
+  m_Center: {x: -0.6781006, y: 0.31162262, z: 1.7458808}
 --- !u!1001 &406373094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7698,15 +7698,15 @@ MonoBehaviour:
   Score: 0
   scoreText: {fileID: 1790592591}
   directionText: {fileID: 1259073200}
-  unlockSecondSide: 1
-  unlockThirdSide: 2
-  unlockFourthSide: 3
+  unlockSecondSide: 10
+  unlockThirdSide: 20
+  unlockFourthSide: 30
   spawnerSides:
   - {fileID: 1911149926}
   - {fileID: 983569578}
   - {fileID: 1322322099}
   - {fileID: 643752463}
-  spawnRate: 5
+  spawnRate: 0.5
 --- !u!1 &755266062
 GameObject:
   m_ObjectHideFlags: 0
@@ -11241,7 +11241,7 @@ Transform:
   m_GameObject: {fileID: 1032826646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1897.31, y: 5.19, z: 1739.21}
+  m_LocalPosition: {x: 1897.31, y: 9.5, z: 1739.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13142,8 +13142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -683.3, y: -94.09}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 77.4, y: -154.1}
+  m_SizeDelta: {x: 2036.4, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1259073199
 CanvasRenderer:
@@ -17513,7 +17513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -683.9, y: -35.6}
+  m_AnchoredPosition: {x: -843.1, y: -116.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790592591
@@ -20608,6 +20608,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5304708570389909524, guid: bf99d9d234cb4414d966a188bd53d522, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304708570389909524, guid: bf99d9d234cb4414d966a188bd53d522, type: 3}
       propertyPath: m_TagString
       value: GameController
       objectReference: {fileID: 0}
@@ -20686,6 +20690,10 @@ PrefabInstance:
     - target: {fileID: 8238148280742226199, guid: bf99d9d234cb4414d966a188bd53d522, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238148280742226199, guid: bf99d9d234cb4414d966a188bd53d522, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8238148280742226199, guid: bf99d9d234cb4414d966a188bd53d522, type: 3}
       propertyPath: m_TagString
