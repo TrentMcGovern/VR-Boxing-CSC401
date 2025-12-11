@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class FruitVFX : MonoBehaviour
+public class FruitHit : MonoBehaviour
 {
 
 
@@ -24,7 +24,7 @@ public class FruitVFX : MonoBehaviour
             Vector3 position = contact.point;
             // Instantiate the particle effect at the collision point and rotation
             GameObject effectInstance = Instantiate(deathParticles, position, rotation);
-
+            ScoreManager.Instance.AddScore(1);
             Destroy(this.gameObject, .1f);
         }
 

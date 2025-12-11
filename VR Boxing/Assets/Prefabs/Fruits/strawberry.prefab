@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 3457909613194792238, guid: 42a635a667236e94dbe65b1c04fd625b, type: 3}
-  hitSound: {fileID: 8300000, guid: 7f80b7ac088a34b45b24ac02e43d0202, type: 3}
 --- !u!64 &7896619424926164139
 MeshCollider:
   m_ObjectHideFlags: 0
